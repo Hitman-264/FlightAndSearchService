@@ -1,0 +1,3 @@
+//those files which we don't want to expose in github repository
+
+node_modules/
