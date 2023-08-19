@@ -1,16 +1,20 @@
-/
-    -src/
-        index.js //server
-        models/
-        controllers/
-        middlewares/
-        services/
-        utils/
-        config/
-    -tests/[later]
-    -static/
-    -temp/
+# Welcome to Flight Service
 
-    //actual server logic reside in src folder.
-    we don't upload tests, static, temp..
-    it will be lighter booting.
+## Project Setup
+- Clone the project on your local
+- Execute 'npm install' one the same path as of your root directory of the downloaded project
+- Creat a .env file in the root directory and add the following environment variables
+    -PORT=3000
+- Inside the src/config folder create a new file 
+config.json and then add the following piece of json
+
+...
+{
+  "development": {
+    "username": "<Your DbLogin Name>",
+    "password": "<Your DB Password>",
+    "database": "Flight_Search_DB",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
