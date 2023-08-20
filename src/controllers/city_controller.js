@@ -8,9 +8,9 @@ const cityService = new CityService();
  *  data will be present in req.body;
  * 
  */
-const create = async function(req,res){  
+const create = async (req,res)=>{  
     try{
-        const city = await cityService.createCity(req.body);
+        const city = await cityService.CreateCity(req.body);
         return res.status(201).json({
             data:city,
             success:true,
@@ -28,7 +28,7 @@ const create = async function(req,res){
     }
 }
 
-const destroy = async function(req,res){
+const destroy = async (req,res)=>{
     try{
         const response = await cityService.deleteCity(req.params.id);
         return res.status(200).json({
@@ -51,7 +51,7 @@ const destroy = async function(req,res){
 // PATCH -> /city/:id
 const update = async (req,res)=>{
     try{
-        const city = await cityService.createCity(req.params.id, req.body);
+        const city = await cityService.updateCity(req.params.id, req.body);
         return res.status(201).json({
             data:city,
             success:true,
@@ -88,4 +88,11 @@ const get = async (req,res)=>{
             err: error
         })
     }
+}
+
+module.exports ={
+    create,
+    destroy,
+    get,
+    update
 }
