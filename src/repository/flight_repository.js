@@ -26,28 +26,33 @@ class FlightRepository{
         //         ]
         //     })
         // }
-        let priceFilter = [];
+        // let priceFilter = [];
         if(data.minPrice){
-            priceFilter.push({
-                price : {
-                    [Op.gte] : data.minPrice
-            }});
-            // Object.assign(filter, {price: {[Op.gte]:data.minPrice}});
+        //     priceFilter.push({
+        //         price : {
+        //             [Op.gte] : data.minPrice
+        //     }});
+             Object.assign(filter, {price: {[Op.gte]:data.minPrice}});
         }
         if(data.maxPrice){
-            priceFilter.push({
-                price : {
-                    [Op.lte] : data.maxPrice
-                }
-            })
-            // Object.assign(filter, {price: {
-            //     [Op.lte] : data.maxPrice
-            // }})
+            // priceFilter.push({
+            //     price : {
+            //         [Op.lte] : data.maxPrice
+            //     }
+            // })
+            Object.assign(filter, {price: {
+                [Op.lte] : data.maxPrice
+            }})
             
         }      // this will only work here, as initially filter assigned with min price, then with max price. so any one of them will only persist.
-        Object.assign(filter, {
-            [Op.and] : priceFilter
-        });
+        if(data.minPrice && data.maxPrice){
+            Object.assign(filter, {price: {
+                [Op.between] : [data.minPrice, data.maxPrice]
+            }})
+        }
+        // Object.assign(filter, {
+        //     [Op.and] : priceFilter
+        // });
         console.log(filter);
         return filter;
     }

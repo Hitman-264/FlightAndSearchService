@@ -7,3 +7,5 @@ const v1ApiRoutes = require('./v1/index');
 router.use('/v1', v1ApiRoutes);
 
 module.exports = router;
+
+const {} = require('../controllers/airport_controller')
