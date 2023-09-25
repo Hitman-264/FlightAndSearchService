@@ -1,4 +1,7 @@
 const express = require('express');
+
+const {FlightMiddlewares} = require('../../middleware/index');
+
 const cityController = require('../../controllers/city_controller');
 const FlightController = require('../../controllers/flight_controllers');
 const AirportController = require('../../controllers/airport_controller')
@@ -15,7 +18,7 @@ router.patch('/city/:id', cityController.update);
 router.get('/city', cityController.getAll);
 
 
-router.post('/flights', FlightController.create);
+router.post('/flights', FlightMiddlewares.validateCreateFlight, FlightController.create);
 router.get('/flights', FlightController.getAll);
 
 router.post('/airports', AirportController.create);
