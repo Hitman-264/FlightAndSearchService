@@ -1,9 +1,9 @@
 const {CityService} = require('../services/index');
 
-const cityService = new CityService();
+const cityService = new CityService(); //global CityService object
 
 /**
- * 
+ * if create is called
  * it will be POST request
  *  data will be present in req.body;
  * 

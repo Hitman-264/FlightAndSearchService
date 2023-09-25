@@ -5,14 +5,14 @@ const {City} = require('../models/index');
 class CityRepository{
 
 
-    async createCity({name}){
+    async createCity({name}){   //obj -> {name:"new delhi"}
         try{
             const city = await City.create({
                 name
             });  //{name:"new delhi"}
             return city;
         }catch(error){
-            console.log("something went wrong at repository layer 1");
+            console.log("something went wrong at repository layer ");
             throw {error};
         }
     }  
@@ -30,10 +30,10 @@ class CityRepository{
         }
     }
 
-    async updateCity(cityId, data){  // {name: "Prayagraj"}
+    async updateCity(cityId, data){  // data-> {name: "Prayagraj"}
         try{
             // The below approach also works but will not return updated object
-            // If we are using Pg then returning true can be use, else not
+            // If we are using Pg then returning true can be used, else not
             // const city = await City.update(data, {
             //     where : {
             //         id : cityId
